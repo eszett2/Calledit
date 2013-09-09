@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @problem.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @problem.description %>
+</p>
+
+<p>
+  <b>Outcome:</b>
+  <%= @problem.outcome %>
+</p>
+<h3>Predictions</h3>
+<% @problem.predictions.each do |prediction| %>
+  <div>
+    <strong><%= prediction.username %></strong>
+    <br />
+    <p><%= prediction.body %></p>
+  </div>
+<% end %>
+<%= render 'predictions/form' %>
+
+
+<%= link_to 'Edit', edit_problem_path(@problem) %> |
+<%= link_to 'Back', problems_path %>
