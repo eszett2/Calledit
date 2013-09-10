@@ -1,27 +1,14 @@
-<h1>Listing problems</h1>
+<h1>Listing Problems</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Outcome</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% @problems.in_groups_of(3) do |group| %>
+  <div class="row">
+    <% group.compact.each do |problem| %>
+      <div class="span4">
 
-<% @problems.each do |problem| %>
-  <tr>
-    <td><%= problem.name %></td>
-    <td><%= problem.description %></td>
-    <td><%= problem.outcome %></td>
-    <td><%= link_to 'Show', problem %></td>
-    <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-    <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+        <h4><%= link_to problem.name, problem %></h4>
+        <%= problem.description %>
+        <%= problem.outcome %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Problem', new_problem_path %>
